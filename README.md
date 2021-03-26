@@ -37,7 +37,7 @@ This plugin is based upon the official documentation for communicating with and 
 1. Power the receiver ON/OFF using a short press of the created device tile in the HomeKit app.
 2. Remote Control and Media control is possible by using the Apple Remote in Control Center on iPhone/iPad (must be installed from the App store prior to iOS/iPadOS 14).
 3. Speaker control is possible after you go to Apple Remote in Control Center on iPhone/iPad `Speaker Service`.
-4. Legacy volume and mute control is possible throught the extra `lightbulb` (slider) or using Siri `Volume Service`.
+4. Legacy volume and mute control is possible throught the extra `lightbulb` (slider) or using Siri `Volume Service`. To use this, ask Siri to "Change the Volume Brightness of <NameOfYourDeviceInHome> to ## percent." replacing the values accordingly when you speak it. The name must match the one given in the "name" field in the config.json.
 5. Inputs can be changed by performing a long press of the device tile in the HomeKit app and then selecting from the list. It is also possible to create separate tiles in the Inputs and Functions button.
 6. Surround Modes can be controlled from the Inputs List from a long press of the device tile or by creating separate tiles in the Inputs and Functions button.
 7. Digital Input Modes control from the inputs list or create separate tile in the Inputs and Functions button.
@@ -55,7 +55,7 @@ This plugin is based upon the official documentation for communicating with and 
 
 To ease configuration, install and use the [Homebridge Config UI X](https://github.com/oznu/homebridge-config-ui-x) plugin (highly recomended). 
 
-Alternatively, Tthe sample configuration can be edited and used manually. See the `sample-config.json` file in this repository for an example or copy/paste the example below into your config.json file, making the apporpriate changes before saving it. Be sure to always make a backup copy of your config.json file before making any changes to it.
+Alternatively, the sample configuration can be edited and used manually. See the `sample-config.json` file in this repository for an example or copy/paste the example below into your config.json file, making the apporpriate changes before saving it. Be sure to always make a backup copy of your config.json file before making any changes to it.
 
 ## Configuration Values
 | Key | Description | 
@@ -71,10 +71,10 @@ Alternatively, Tthe sample configuration can be edited and used manually. See th
 | `volumeControl`| Select what a additional volume control mode You want to use (None, Slider, Fan) |
 | `switchInfoMenu`| If `true` then the `I` button will toggle its behaviour in the Apple Remote in Control Center and `PowerModeSelection` in settings |
 | `disableLogInfo`| If `true` then disable log info, all values and state will not be displayed in Homebridge log console |
-| `manufacturer` | Optional free-form informational data that will be displayed in the Home.app if it is filled in |
-| `modelName` | Optional free-form informational data that will be displayed in the Home.app if it is filled in |
-| `serialNumber` | Optional free-form informational data that will be displayed in the Home.app if it is filled in |
-| `firmwareRevision` | Optional free-form informational data that will be displayed in the Home.app if it is filled in |
+| `manufacturer` | Optional free-form informational data that will be displayed in the Home.app |
+| `modelName` | Optional free-form informational data that will be displayed in the Home.app |
+| `serialNumber` | Optional free-form informational data that will be displayed in the Home.app if the receiver, which has priority, does not give a value. Some receivers send 00 rather than a correct value. |
+| `firmwareRevision` | Optional free-form informational data that will be displayed in the Home.app |
 
 <p align="left">
   <a href="https://github.com/grzegorz914/homebridge-denon-tv"><img src="https://raw.githubusercontent.com/grzegorz914/homebridge-denon-tv/master/graphics/ustawienia.png" height="170"></a>
@@ -138,9 +138,9 @@ To enable the ability to control each zone seperately then use the configuration
 | `masterVolume` | If `true` then the volume for that zone (typically you would only use this for the Main Zone) will set the entire receiver `UP` or `DOWN` rather than just the zone itself |
 | `masterMute` | If is `true` the mute switch for that zone (typically you would only use this for the Main Zone) will muted the entire receiver `ON` or `OFF` rather than just the zone itself |
 | `volumeControl` | If `true` then allow for separate volume control for each zone |
-| `switchInfoMenu` | will working for all zones seperat but have same end effect for each zone |
-| `inputs` | Choose from available inputs |
-| `buttonsMainZone` | Choose the function for additional control button |
+| `switchInfoMenu` | This toggle behaviour for the *I* button in the Apple Remote and *PowerModeSELECTion* in settings. This value will be applied to all zones equally. |
+| `inputs` | Choose from available inputs to appear in the selector wheel. |
+| `buttonsMainZone` | Choose the function for additional control button for the Main Zone|
 | `buttonsZone2` | Choose the function for additional control button for Zone 2 |
 | `buttonsZone3` | Choose the function for additional control button for Zone 3 |
 
